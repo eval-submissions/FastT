@@ -166,18 +166,3 @@ After Configuration, run the build script in the folder. Before running it, plea
 
 After the execution of the script. The modified tensorflow should be successfully installed.
 
-
-## Experiment workflow
-
-The experiment workflow is as follows: (1) profile 8 models toobtain the computation cost model; 
-(2) transfer data throughthe link of each pair of devices to estimate the link band-width. 
-(3) generate input features and train the GNN usingreinforcement learning. 
-(4) record the deployment strategyafter convergence and analyze the strategy.
-
-## Evaluation and expected result
-**Per-iteration training speedup**. After convergence, we use script activater.py to deploy different strategies specified in configuration file activate_config.txt. 
-It launches the distributed training process over the heterogeneous environment and records the per-iteration time of each deployment strategy. 
-We activate the strategy found by FastT and the 4 baseline data parallelism strategies in this experiment and calculate the speedup shown in Table. 1 in the paper.
-
-**Deployment of large models**. In this experiment, we test ResNet200, Bert-large and Xlnet-large with larger batch sizes and Transformer, Bert-large and Xlnet-large with more layers. 
-Different from the previous experiment, most of data parallelism strategies are expected to be out of memory this time, while FastT can still find feasible solutions to deploy these large models.
